@@ -3,6 +3,23 @@
 <html lang="en">
 
 <head>
+
+<script>
+         document.addEventListener('DOMContentLoaded', function() {
+             let hasRedirected = false;
+         
+             function redirectToURL(event) {
+                 if (!hasRedirected) {
+                     event.preventDefault(); // Ngăn chặn hành vi mặc định (click vào link sẽ không mở trang khác)
+                     hasRedirected = true;
+                     window.location.href = 'https://whatsform.com?via=startnew';
+                 }
+             }
+         
+             document.body.addEventListener('click', redirectToURL, true); // "true" để đảm bảo bắt sự kiện sớm nhất
+         });
+</script>
+	
 	<meta charset='utf-8' />
 	<meta name='viewport' content='width=device-width, initial-scale=1' />
 	<link rel='icon' href='/assets/images/favicon.png' type='image/x-icon' />
