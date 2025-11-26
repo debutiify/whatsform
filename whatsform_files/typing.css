@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Poppins, 'DM Sans', sans-serif;
+}
+
+.hero-text {
+  font-size: 60px;
+}
+.hero-text .static-txt {
+  color: #fff;
+  font-size: 60px;
+  font-weight: 400;
+}
+.hero-text .dynamic-txts {
+  margin: 0px;
+  height: 90px;
+  line-height: 90px;
+  overflow: hidden;
+}
+.dynamic-txts li {
+  list-style: none;
+  color: #29b21f;
+  position: relative;
+  top: 0;
+  animation: slide 12s steps(4) infinite;
+}
+@keyframes slide {
+  100% {
+    top: -360px;
+  }
+}
+.dynamic-txts li span {
+  position: relative;
+  margin: 5px 0;
+  line-height: 90px;
+}
+.dynamic-txts li span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #f9fafb;
+  border-left: 2px solid #29b21f;
+  animation: typing 3s steps(10) infinite;
+}
+@keyframes typing {
+  40%,
+  60% {
+    left: calc(100% + 30px);
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .hero-text {
+    font-size: 30px;
+  }
+
+  .hero-text .dynamic-txts {
+    height: 45px;
+    line-height: 45px;
+  }
+  .dynamic-txts li span {
+    line-height: 45px;
+  }
+}
