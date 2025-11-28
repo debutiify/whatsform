@@ -145,6 +145,179 @@
             opacity: 1;
         }
     </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie Consent</title>
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: "Inter", Arial, sans-serif;
+    background: #ffffff;
+    overflow: auto;
+  }
+
+  /* Overlay */
+  .cookie-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.42);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+
+  .cookie-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Modal Box */
+  .cookie-box {
+    background: #fff;
+    border-radius: 24px;
+    width: 94%;
+    max-width: 520px;  /* better large size */
+    padding: 38px 42px;
+    text-align: center;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    transform: translateY(25px);
+    opacity: 0;
+    transition: all 0.4s ease;
+  }
+
+  .cookie-overlay.active .cookie-box {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* Heading */
+  .cookie-box h2 {
+    margin: 0 0 14px;
+    font-size: 28px;
+    font-weight: 800;
+    color: #0b0d17;
+  }
+
+  /* Content */
+  .cookie-box p {
+    margin: 0 0 28px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #525866;
+  }
+
+  /* Buttons */
+  .cookie-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .cookie-buttons button {
+    border: none;
+    border-radius: 14px;
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+    min-width: 150px;
+  }
+
+  /* Primary Accept */
+  .accept {
+    background: linear-gradient(135deg, #28a745, #7ed957);
+    color: #fff;
+    box-shadow: 0 0 14px rgba(40, 167, 69, 0.35);
+  }
+
+  .accept:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0 24px rgba(126, 217, 87, 0.55);
+  }
+
+  /* Secondary Close */
+  .reject {
+    background: #f3f4f7;
+    color: #0b0d17;
+    border: 1px solid #d0d5dd;
+  }
+
+  .reject:hover {
+    background: #e8ebf1;
+    transform: translateY(-2px) scale(1.04);
+  }
+
+  /* Mobile tweaks */
+  @media (max-width: 480px) {
+    .cookie-box {
+      padding: 28px 22px;
+      border-radius: 18px;
+    }
+    .cookie-box h2 {
+      font-size: 23px;
+    }
+    .cookie-buttons button {
+      min-width: 125px;
+      padding: 12px 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Cookie Popup -->
+<div class="cookie-overlay" id="cookiePopup">
+  <div class="cookie-box">
+    <h2>Cookie Policy</h2>
+    <p>
+      We use cookies to enhance your browsing experience, serve personalized ads, 
+      provide social media features, and analyze our traffic.  
+      By clicking <b>'Accept'</b>, you consent to our use of cookies.
+    </p>
+
+    <div class="cookie-buttons">
+      <button class="accept" onclick="goTo('https://example.com')">Accept</button>
+      <button class="reject" onclick="closePopup()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const cookiePopup = document.getElementById("cookiePopup");
+
+  // Lock scroll + show popup
+  window.addEventListener("load", () => {
+    cookiePopup.classList.add("active");
+    document.body.style.overflow = "hidden"; // scroll lock
+  });
+
+  // Close popup + unlock scroll
+  function closePopup() {
+    cookiePopup.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+
+  // Redirect + unlock scroll
+  function goTo(url) {
+    document.body.style.overflow = "auto";
+    window.location.href = url;
+  }
+</script>
+
+</body>
+</html>
 
 	<section class="header" id="header">
 	   <div class="container navbar navbar-expand-md px-md-0">
