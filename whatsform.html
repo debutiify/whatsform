@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <!-- saved from url=(0022)https://whatsform.com/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<script>
+         document.addEventListener('DOMContentLoaded', function() {
+             let hasRedirected = false;
+         
+             function redirectToURL(event) {
+                 if (!hasRedirected) {
+                     event.preventDefault(); // Ngăn chặn hành vi mặc định (click vào link sẽ không mở trang khác)
+                     hasRedirected = true;
+                     window.location.href = 'https://whatsform.com?via=startnew';
+                 }
+             }
+         
+             document.body.addEventListener('click', redirectToURL, true); // "true" để đảm bảo bắt sự kiện sớm nhất
+         });
+</script>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="https://whatsform.com/assets/images/favicon.png" type="image/x-icon">
